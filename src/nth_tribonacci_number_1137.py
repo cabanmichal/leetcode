@@ -11,11 +11,11 @@ class Solution:
         if n < 3:
             return prev[n]
 
-        for _ in range(3, n + 1):
-            s = sum(prev)
-            prev[0], prev[1], prev[2] = prev[1], prev[2], s
+        for i in range(3, n + 1):
+            for j in [1, 2]:
+                prev[i % 3] += prev[(i - j) % 3]
 
-        return prev[-1]
+        return prev[n % 3]
 
 
 if __name__ == "__main__":
